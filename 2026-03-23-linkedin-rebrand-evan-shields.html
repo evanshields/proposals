@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Profile Rebrand — Evan A. Shields</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --teal:        #005253;
+    --teal-light:  #EAF3F3;
+    --teal-mid:    #0a6b6c;
+    --slate:       #3C4856;
+    --slate-light: #6b7a8d;
+    --taupe:       #D4C4B0;
+    --taupe-light: #F5F0EA;
+    --taupe-dark:  #b0a090;
+    --blue:        #2B52EF;
+    --blue-light:  #EEF1FD;
+    --white:       #FFFFFF;
+    --off-white:   #FAFAF8;
+    --ink:         #1a2230;
+    --fs-display:  clamp(2.2rem, 4.5vw, 3.2rem);
+    --fs-h1:       clamp(1.6rem, 3vw, 2.4rem);
+    --fs-h2:       clamp(1.25rem, 2.2vw, 1.7rem);
+    --fs-h3:       clamp(1.05rem, 1.6vw, 1.25rem);
+    --fs-body:     1rem;
+    --fs-small:    0.875rem;
+    --serif:       'Playfair Display', Georgia, serif;
+    --subhead:     'Josefin Sans', system-ui, sans-serif;
+    --sans:        'Noto Sans', system-ui, sans-serif;
+    --mono:        'SF Mono', 'Fira Code', 'Consolas', monospace;
+    --max-w:       820px;
+    --section-pad: clamp(2.5rem, 5vw, 4rem);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: var(--sans); font-weight: 300; color: var(--slate); background: var(--off-white); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .top-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 900; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--taupe); transition: box-shadow 0.3s; }
+  .top-bar.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
+  .top-bar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.625rem 2rem; }
+  .top-bar-left { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+  .top-bar-logo { height: 28px; width: auto; }
+  .top-bar-brand { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; color: var(--teal); letter-spacing: 0.02em; }
+  .top-bar-center { flex: 1; text-align: center; min-width: 0; padding: 0 1rem; }
+  .top-bar-title { font-family: var(--sans); font-size: var(--fs-small); color: var(--slate-light); letter-spacing: 0.04em; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+  .top-bar-right { text-align: right; flex-shrink: 0; }
+  .top-bar-address { font-family: var(--sans); font-size: 0.7rem; color: var(--slate-light); letter-spacing: 0.03em; font-weight: 300; line-height: 1.5; }
+  .top-bar-address a { color: var(--slate-light); text-decoration: none; }
+  .top-bar-address a:hover { color: var(--teal); }
+  #progress-bar { position: absolute; bottom: 0; left: 0; height: 2.5px; width: 0%; background: var(--blue); z-index: 1000; transition: width 0.1s linear; }
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2rem); }
+  .doc-body { padding: var(--section-pad) 0; margin-top: 56px; }
+  .doc-body h1 { font-family: var(--serif); font-weight: 500; font-size: var(--fs-h1); color: var(--teal); line-height: 1.2; margin: 3rem 0 1.25rem; padding-top: 2rem; border-top: 1px solid var(--taupe); }
+  .doc-body h1:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .doc-body h2 { font-family: var(--subhead); font-weight: 600; font-size: var(--fs-h2); color: var(--slate); line-height: 1.3; margin: 2.5rem 0 1rem; }
+  .doc-body h3 { font-family: var(--subhead); font-weight: 600; font-size: var(--fs-h3); color: var(--slate); line-height: 1.3; margin: 2rem 0 0.75rem; }
+  .doc-body h4 { font-family: var(--subhead); font-weight: 600; font-size: 1rem; color: var(--teal); line-height: 1.4; margin: 1.5rem 0 0.5rem; }
+  .doc-body p { margin-bottom: 1.1rem; font-size: var(--fs-body); line-height: 1.8; }
+  .doc-body p:last-child { margin-bottom: 0; }
+  .doc-body strong { font-weight: 500; color: var(--ink); }
+  .doc-body em { font-style: italic; }
+  .doc-body a { color: var(--teal); text-decoration: underline; text-underline-offset: 2px; }
+  .doc-body a:hover { color: var(--teal-mid); }
+  .doc-body ul { list-style: none; padding: 0; margin: 1rem 0 1.5rem; }
+  .doc-body ul li { padding: 0.4rem 0 0.4rem 1.5rem; position: relative; font-size: var(--fs-body); color: var(--slate); line-height: 1.7; border-bottom: 1px solid rgba(212,196,176,0.25); }
+  .doc-body ul li:last-child { border-bottom: none; }
+  .doc-body ul li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 6px; height: 6px; border-radius: 50%; background: var(--taupe-dark); }
+  .doc-body ol { list-style: none; padding: 0; margin: 1rem 0 1.5rem; counter-reset: md-ol; }
+  .doc-body ol li { counter-increment: md-ol; padding: 0.4rem 0 0.4rem 2rem; position: relative; font-size: var(--fs-body); color: var(--slate); line-height: 1.7; border-bottom: 1px solid rgba(212,196,176,0.25); }
+  .doc-body ol li:last-child { border-bottom: none; }
+  .doc-body ol li::before { content: counter(md-ol) '.'; position: absolute; left: 0; top: 0.4rem; font-weight: 600; color: var(--teal); font-size: 0.9rem; }
+  .doc-body ul ul, .doc-body ol ol, .doc-body ul ol, .doc-body ol ul { margin: 0.25rem 0 0.25rem 0.5rem; }
+  .doc-body blockquote { border-left: 3px solid var(--taupe); padding: 1.25rem 1.5rem; background: var(--taupe-light); margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+  .doc-body blockquote p { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--slate); line-height: 1.7; margin: 0; }
+  .doc-body blockquote p strong { font-style: normal; }
+  .table-wrapper { overflow-x: auto; margin: 1.5rem 0; border-radius: 8px; border: 1px solid var(--taupe); background: var(--white); }
+  .doc-body table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .doc-body thead { background: var(--teal); }
+  .doc-body th { padding: 0.85rem 1rem; text-align: left; color: var(--white); font-weight: 500; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; border-bottom: 2px solid var(--teal-mid); }
+  .doc-body td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(212,196,176,0.3); color: var(--slate); vertical-align: top; }
+  .doc-body tbody tr:nth-child(even) { background: var(--taupe-light); }
+  .doc-body tbody tr:hover { background: var(--teal-light); }
+  .doc-body code { background: var(--teal-light); color: var(--teal); padding: 0.15rem 0.45rem; border-radius: 3px; font-family: var(--mono); font-size: 0.88em; font-weight: 400; }
+  .doc-body pre { background: var(--ink); color: #e8e6e3; padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; border-left: 4px solid var(--teal); font-size: 0.9rem; line-height: 1.55; }
+  .doc-body pre code { background: none; color: inherit; padding: 0; border-radius: 0; font-size: inherit; }
+  .doc-body hr { border: none; border-top: 1px solid var(--taupe); margin: 2.5rem 0; }
+  .doc-body .task-list { list-style: none; padding: 0; }
+  .doc-body .task-list li { padding-left: 1.75rem; }
+  .doc-body .task-list li::before { display: none; }
+  .doc-body .task-list input[type="checkbox"] { position: absolute; left: 0; top: 0.55rem; accent-color: var(--teal); width: 16px; height: 16px; }
+  .doc-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 1.5rem 0; border: 1px solid var(--taupe); }
+  footer { background: var(--taupe-light); padding: 2rem; text-align: center; margin-top: 3rem; border-top: 1px solid var(--taupe); }
+  footer p { font-size: 0.75rem; color: var(--slate-light); letter-spacing: 0.06em; margin: 0; }
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 600px) { .top-bar-inner { padding: 0.625rem 1rem; } .top-bar-address { display: none; } .top-bar-title { font-size: 0.75rem; } .top-bar-brand { font-size: 0.9rem; } .doc-body table { font-size: 0.8rem; } .doc-body th, .doc-body td { padding: 0.6rem 0.75rem; } }
+  @media print { .top-bar { display: none; } .doc-body { margin-top: 0; } .fade-in { opacity: 1; transform: none; } body { font-size: 11pt; } }
+</style>
+</head>
+
+<body>
+
+<header class="top-bar" id="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <img src="data:image/png;base64,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" alt="Shieldstone" class="top-bar-logo">
+      <span class="top-bar-brand">Shieldstone</span>
+    </div>
+    <div class="top-bar-center">
+      <span class="top-bar-title">LinkedIn Profile Rebrand — Evan A. Shields</span>
+    </div>
+    <div class="top-bar-right">
+      <div class="top-bar-address">
+        <a href="https://shieldstone.co">shieldstone.co</a><br>
+        19505 Biscayne Blvd, Suite 2350, Aventura, FL 33180
+      </div>
+    </div>
+  </div>
+  <div id="progress-bar"></div>
+</header>
+
+<div class="doc-body">
+  <div class="container">
+
+    <h1 class="fade-in" id="linkedin-profile-rebrand">LinkedIn Profile Rebrand — Evan A. Shields</h1>
+    <p><em>Created: March 5, 2026 | Ready for implementation</em></p>
+
+    <hr>
+
+    <h2 class="fade-in" id="headline">Headline</h2>
+    <pre><code>Founder &amp; CEO, Shieldstone  |  Building Tomorrow's Housing Today  |  Workforce Housing. Real Estate Credit. FinTech. Media</code></pre>
+
+    <hr>
+
+    <h2 class="fade-in" id="about-section">About Section</h2>
+    <p>I started as a teacher on the south side of Atlanta. Every year I taught, rent hikes pushed me out of my housing. I was living the same struggle as the families I served.</p>
+    <p>That's when I realized: the built environment changes everything. But I couldn't fix it from inside a classroom.</p>
+    <p>So I went to Wall Street. Ten years. $4.5 billion in deals. 22,000 families housed. Prudential. R4 Capital. BridgeInvest. I learned how the system works — and where it breaks.</p>
+    <p>Now I'm using that expertise to fix what's broken.</p>
+    <p>At Shieldstone, we acquire and develop workforce housing in markets where public policy creates opportunity. We pair Wall Street capital markets execution with AI-powered investment systems to deliver institutional returns and measurable community impact.</p>
+    <p>Through GS Residential — our joint venture with Gateway Merchant Banking — we're targeting 2,000+ units over 36 months. At USDV Capital, where I serve as President &amp; CIO, we originate and manage real estate credit across a $1.3B portfolio.</p>
+    <p>I also host Built Different — a weekly newsletter and podcast breaking down the signal in housing, AI, policy, and impact investing. No buzzwords. No fluff. Just what the people building tomorrow's housing actually need to know.</p>
+    <p>Strong returns and strong communities are not in conflict. If you're choosing, you're doing it wrong.</p>
+    <p>→ Investors &amp; capital partners: <a href="mailto:partners@gsresidential.com">partners@gsresidential.com</a><br>
+    → Advisory &amp; AI consulting: <a href="mailto:evan@shieldstone.co">evan@shieldstone.co</a><br>
+    → Built Different: <a href="https://builtdifferent.build">builtdifferent.build</a></p>
+
+    <hr>
+
+    <h2 class="fade-in" id="experience">Experience</h2>
+
+    <h3 id="shieldstone">Shieldstone — Founder &amp; CEO</h3>
+    <p><em>Jan 2024 – Present · Birmingham, AL</em></p>
+    <p>Shieldstone is a vertically integrated real estate investment and technology firm focused on workforce housing.</p>
+    <p>We acquire, develop, and invest in multifamily properties in markets where public policy creates tailwinds — delivering mid-teens returns while solving a critical housing shortage. We pair institutional capital markets execution with AI-powered investment and underwriting systems.</p>
+    <ul>
+      <li>$4.5B in personal real estate transactions across prior roles (Prudential, R4 Capital, BridgeInvest)</li>
+      <li>22,000 families housed through career</li>
+      <li>10,000-unit pipeline target over 5 years</li>
+      <li>AI advisory practice helping CRE investors and lenders adopt technology that actually works</li>
+    </ul>
+    <p><em>Building tomorrow's housing today.</em></p>
+
+    <h3 id="gs-residential">GS Residential — Managing Partner</h3>
+    <p><em>2026 – Present</em></p>
+    <p>Joint venture between Gateway Merchant Banking (Charles Frazier, 30+ years, $2.5B+ value created, 11,500+ units) and Shieldstone.</p>
+    <p>We invest in, develop, and manage workforce housing across the Southeast, Midwest, and Mid-Atlantic. Deal-by-deal joint ventures with institutional co-GPs. Not a fund — a partnership built to close.</p>
+    <ul>
+      <li>70% acquisitions / 30% ground-up development</li>
+      <li>Targeting 2,000+ units over 36 months</li>
+      <li>Mid-teens IRR targets with policy-aligned risk mitigation</li>
+      <li>LIHTC, HUD 223(f), agency financing expertise</li>
+    </ul>
+
+    <h3 id="usdv-capital">USDV Capital — President &amp; Chief Investment Officer</h3>
+    <p><em>Jan 2026 – Present</em></p>
+    <p>$1.3B AUM real estate credit platform. Origination, structuring, and portfolio management across bridge, construction, and permanent debt products.</p>
+    <p>Leading investment strategy, capital allocation, and team development for a growing institutional lending platform.</p>
+
+    <h3 id="built-different">Built Different — Founder &amp; Host</h3>
+    <p><em>2025 – Present</em></p>
+    <p>Weekly newsletter and podcast for the people building tomorrow's housing.</p>
+    <p>Breaking down the signal in housing, AI, policy, and impact investing. No buzzwords. No fluff. Just what the people doing the work actually need to know.</p>
+    <p>Read by real estate investors, lenders, and policy leaders across the country.</p>
+    <p><a href="https://builtdifferent.build">builtdifferent.build</a></p>
+
+    <hr>
+
+    <h2 class="fade-in" id="profile-settings-checklist">Profile Settings Checklist</h2>
+    <ul class="task-list">
+      <li><input type="checkbox"> Update headline</li>
+      <li><input type="checkbox"> Update About section</li>
+      <li><input type="checkbox"> Add Shieldstone experience</li>
+      <li><input type="checkbox"> Add USDV Capital experience</li>
+      <li><input type="checkbox"> Add Built Different experience</li>
+      <li><input type="checkbox"> Turn ON Creator mode</li>
+      <li><input type="checkbox"> Update contact email to evan@shieldstone.co</li>
+      <li><input type="checkbox"> Add website links: shieldstone.co, builtdifferent.build, gsresidential.com</li>
+      <li><input type="checkbox"> Update Services: "Real Estate Investment, AI Advisory, Capital Markets"</li>
+      <li><input type="checkbox"> Remove all Indelible Capital Partners references</li>
+      <li><input type="checkbox"> Remove outdated volunteer positions</li>
+      <li><input type="checkbox"> Upload new cover art (Nano Banana)</li>
+    </ul>
+
+    <h2 class="fade-in" id="next-week">Next Week</h2>
+    <ul class="task-list">
+      <li><input type="checkbox"> Add GS Residential experience entry</li>
+      <li><input type="checkbox"> Update Featured section with GS Residential link</li>
+      <li><input type="checkbox"> Post GS Residential announcement</li>
+    </ul>
+
+    <hr>
+
+    <h2 class="fade-in" id="appendix-cover-art">Appendix: Cover Art Brief (Nano Banana)</h2>
+    <p><em>Dimensions: 1584 x 396 px</em></p>
+    <p><strong>Vibe:</strong> Media-forward. Positions Evan as investor AND media personality. Built Different energy meets institutional credibility. Something that makes people stop scrolling.</p>
+
+    <h3 id="color-palette">Color Palette (Matches Shieldstone Landing Page)</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Color</th><th>Hex</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>Deep Teal</td><td><code>#005253</code></td><td>Primary background gradient base</td></tr>
+          <tr><td>Gradient Dark</td><td><code>#0d3a39</code></td><td>Gradient start (left side)</td></tr>
+          <tr><td>Gradient Light</td><td><code>#2f7e7b</code></td><td>Gradient end (right side)</td></tr>
+          <tr><td>Soft Teal</td><td><code>#58ABA8</code></td><td>Accent elements, descriptor text</td></tr>
+          <tr><td>Light Blue</td><td><code>#95C9E6</code></td><td>Atmospheric glow/blur accent</td></tr>
+          <tr><td>Accent Coral</td><td><code>#F3B8A7</code></td><td>Warm accent line or decorative element</td></tr>
+          <tr><td>Charcoal</td><td><code>#28323E</code></td><td>Secondary dark tones</td></tr>
+          <tr><td>Paper White</td><td><code>#f7f4ef</code></td><td>Tagline text (warm white, not pure white)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Background gradient:</strong> <code>linear-gradient(to bottom-right, #0d3a39 → #005253 → #2f7e7b)</code></p>
+
+    <h3 id="layout">Layout</h3>
+<pre><code>┌──────────────────────────────────────────────────────────────┐
+│                                                              │
+│   [Left 55%]                         [Right 45%]             │
+│                                                              │
+│   BUILDING TOMORROW'S                 Logo cluster:          │
+│   HOUSING TODAY.                      - Shieldstone (largest)│
+│                                       - GS Residential       │
+│   ─────── [coral accent line]         - USDV Capital         │
+│                                       - Built Different      │
+│   Workforce Housing . Real Estate                            │
+│   Credit . FinTech . Media            [2x2 grid or column]   │
+│                                                              │
+│   [Subtle atmospheric blur blobs in light-blue + coral]      │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘</code></pre>
+
+    <h3 id="typography">Typography</h3>
+    <ul>
+      <li><strong>"Building Tomorrow's Housing Today."</strong> — Playfair Display Bold, large, warm white (<code>#f7f4ef</code>)</li>
+      <li><strong>Descriptors</strong> (Workforce Housing . Real Estate Credit . FinTech . Media) — Josefin Sans Regular, soft teal (<code>#58ABA8</code>)</li>
+      <li><strong>Accent line</strong> — Coral (<code>#F3B8A7</code>), thin horizontal rule between tagline and descriptors</li>
+    </ul>
+
+    <h3 id="atmospheric-effects">Atmospheric Effects</h3>
+    <ul>
+      <li>Blur blobs: Light Blue (<code>#95C9E6</code>) at ~25% opacity and Coral (<code>#F3B8A7</code>) at ~20% opacity</li>
+      <li>Creates the same premium, atmospheric depth as the Shieldstone landing page hero</li>
+    </ul>
+
+    <h3 id="logo-arrangement">Logo Arrangement</h3>
+    <ul>
+      <li><strong>Shieldstone</strong> — Largest, top of cluster (primary brand)</li>
+      <li><strong>GS Residential, USDV Capital, Built Different</strong> — Secondary size</li>
+      <li>All logos in white/light versions against the dark background</li>
+      <li>Arranged in a clean 2x2 grid or vertical stack on the right 40%</li>
+    </ul>
+
+    <h3 id="avoid">Avoid</h3>
+    <ul>
+      <li>Stock photos, cityscapes, generic skylines</li>
+      <li>Pure white background</li>
+      <li>Cluttered text — let the typography and logos breathe</li>
+      <li>Colors from GS Residential site (navy <code>#1B2A4A</code>) — use Shieldstone palette only</li>
+    </ul>
+
+    <h3 id="mobile-crop-note">Mobile Crop Note</h3>
+    <p>LinkedIn crops cover photos to center on mobile. Keep tagline text centered or slightly left-of-center. Leave ~50px safe margin on all sides. Logos should not bleed to the right edge.</p>
+
+  </div>
+</div>
+
+<footer>
+  <p>Shieldstone · March 2026 · LinkedIn Profile Rebrand — Evan A. Shields</p>
+</footer>
+
+<script>
+  const bar = document.getElementById('progress-bar');
+  const topBar = document.getElementById('top-bar');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    if (total > 0) bar.style.width = (scrolled / total * 100) + '%';
+    topBar.classList.toggle('scrolled', scrolled > 60);
+  }, { passive: true });
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.doc-body p, .doc-body ul li, .doc-body ol li, .doc-body hr, .doc-body blockquote').forEach(el => {
+    el.classList.add('fade-in');
+  });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
